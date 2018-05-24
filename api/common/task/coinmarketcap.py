@@ -1,4 +1,5 @@
-from api.common.analyzes.currency_price_analyzation import history_price_time_resample
+from api.common.analyzes.currency_price_analyzation import history_price_time_resample, currency_rank_analyze,\
+    market_cap_total_resample, market_cap_altcoin_resample
 from api.common.crawl.coinmarketcrawl import CoinMarketCrawl
 
 
@@ -18,7 +19,9 @@ def coinmarketcap_crawl_tasks():
 def coinmarketcap_analyze_tasks():
     print('analyze coinmarketcap data')
     history_price_time_resample()
-
+    currency_rank_analyze()
+    market_cap_total_resample()
+    market_cap_altcoin_resample()
 
 if __name__ == '__main__':
     coinmarketcap_analyze_tasks()
