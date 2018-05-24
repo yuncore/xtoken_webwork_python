@@ -32,10 +32,8 @@ def history_price_time_resample(ahead_time=0):
     }
     :return:
     """
-    print('start')
     # 遍历所有货币的历史数据，逐个进行数据整理, 取消cursor的超时时间，需要显式关闭cursor
-    currency_cursor = crawl_db[CrawlCollections.COINMARKET_HISTORY_PRICE].find(no_cursor_timeout=True)
-    print('connection')
+    currency_cursor = crawl_db[CrawlCollections.COINMARKET_HISTORY_PRICE].find({'_id': 'jobscoin'}, no_cursor_timeout=True)
     for currency in currency_cursor:
         start = time.time()
         currency_id = currency['_id']
@@ -178,7 +176,7 @@ def filter_not_resample_data(data, last_resample_time, ahead_time=0):
     if last_resample_time == 0:
         t = time.time() * 1000 - ahead_time
     else:
-        t = time.time() * 1000 - ahead_time
+        t = last_resample_time
     for item in reversed(data):
         if item[0] > t:
             original_data.append(item)
@@ -189,6 +187,7 @@ def filter_not_resample_data(data, last_resample_time, ahead_time=0):
         df.time = df['time'].apply(lambda x: datetime.fromtimestamp(x / 1000))
         df.set_index('time', inplace=True)
         df = df.resample('D').mean()
+        df = df.fillna(0)
         return [[index.timestamp(), float(row['price'])] for index, row in df.iterrows()]
     else:
         return []
@@ -229,6 +228,7 @@ def currency_rank_analyze(ahead_time=0):
             # 将当天的市值排序
             if c_id in market_caps:
                 df = pd.DataFrame([[k, market_caps[k]] for k in market_caps], columns=['name', 'values'])
+                df = df.fillna(0)
                 df = df.sort_values(by='values', ascending=False)
                 count = len(df.index)
                 df['sort'] = range(count)
@@ -246,6 +246,6 @@ def currency_rank_analyze(ahead_time=0):
 if __name__ == '__main__':
     # currency_rank_analyze(ahead_time=24 * 3600 * 50)
     # check_history_rank_data()
-    # history_price_time_resample(ahead_time=24 * 3600 * 50 * 1000)
-    market_cap_altcoin_resample(ahead_time=24 * 3600 * 50 * 1000)
+    history_price_time_resample(ahead_time=24 * 3600 * 50 * 1000)
+    # market_cap_altcoin_resample(ahead_time=24 * 3600 * 50 * 1000)
 
