@@ -5,3 +5,12 @@
 /startTest.sh
 /MANIFEST
 /MANIFEST.in
+
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
