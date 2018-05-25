@@ -13,7 +13,7 @@ app.config.from_object(Conf)
 app.register_blueprint(site_blue_print, url_prefix='/xp/site')
 
 
-# scheduler_task()
+scheduler_task()
 
 @app.before_request
 def before_request():

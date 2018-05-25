@@ -197,7 +197,7 @@ def currency_rank_analyze(ahead_time=0):
     """计算每个货币排名随时间的变化
     :param ahead_time 单位精确到秒
     """
-    currencies = crawl_db[CrawlCollections.COINMARKET_CURRENCY_PRICE].find({'_id': 'neo'})
+    currencies = crawl_db[CrawlCollections.COINMARKET_CURRENCY_PRICE].find({})
     currency_ids = [c['id'] for c in currencies]
     start = time.time()
     for c_id in currency_ids:
@@ -234,7 +234,7 @@ def currency_rank_analyze(ahead_time=0):
                 df['sort'] = range(count)
                 rank = int(df[df['name'] == c_id].iloc[0, 2])
                 market_cap_rank.append([t, rank, count])
-                print('append data {0} {1} {2}'.format(timestamp_to_datetime(t), rank, count))
+                # print('append data {0} {1} {2}'.format(timestamp_to_datetime(t), rank, count))
 
         stat_db[StatCollections.HISTORY_CURRENCY_RANK].find_one_and_update(
             {'currency_id': c_id},
@@ -244,8 +244,8 @@ def currency_rank_analyze(ahead_time=0):
 
 
 if __name__ == '__main__':
-    # currency_rank_analyze(ahead_time=24 * 3600 * 50)
-    # check_history_rank_data()
     history_price_time_resample(ahead_time=24 * 3600 * 50 * 1000)
-    # market_cap_altcoin_resample(ahead_time=24 * 3600 * 50 * 1000)
+    market_cap_total_resample(ahead_time=24 * 3600 * 50 * 1000)
+    market_cap_altcoin_resample(ahead_time=24 * 3600 * 50 * 1000)
+    currency_rank_analyze(ahead_time=24 * 3600 * 50)
 

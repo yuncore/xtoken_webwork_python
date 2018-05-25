@@ -22,13 +22,13 @@ job_defaults = {
 }
 
 jobSchema = [
-    {'id': 'bitcointalk_analyze_tasks', 'func': bitcointalk_analyze_tasks, 'period': 7},
-    {'id': 'bitcointalk_crawl_tasks', 'func': bitcointalk_crawl_tasks, 'period': 2},
-    {'id': 'reddit_analyze_tasks', 'func': reddit_analyze_tasks, 'period': 7},
-    {'id': 'reddit_crawl_tasks', 'func': reddit_crawl_tasks, 'period': 2},
-    {'id': 'github_crawl_tasks', 'func': github_crawl_tasks, 'period': 7},
-    {'id': 'coinmarketcap_crawl_tasks', 'func': coinmarketcap_crawl_tasks, 'period': 2},
-    {'id': 'coinmarketcap_analyze_tasks', 'func': coinmarketcap_analyze_tasks, 'period': 7},
+    # {'id': 'bitcointalk_analyze_tasks', 'func': bitcointalk_analyze_tasks, 'period': 7},
+    # {'id': 'bitcointalk_crawl_tasks', 'func': bitcointalk_crawl_tasks, 'period': 2},
+    # {'id': 'reddit_analyze_tasks', 'func': reddit_analyze_tasks, 'period': 7},
+    # {'id': 'reddit_crawl_tasks', 'func': reddit_crawl_tasks, 'period': 2},
+    # {'id': 'github_crawl_tasks', 'func': github_crawl_tasks, 'period': 7},
+    {'id': 'coinmarketcap_crawl_tasks', 'func': coinmarketcap_crawl_tasks, 'period': 1},
+    {'id': 'coinmarketcap_analyze_tasks', 'func': coinmarketcap_analyze_tasks, 'period': 1},
 ]
 
 
