@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="142419ee-7cde-4cc2-a45a-d7ce426cc32b" name="Default" comment="update gitignore">
+    <list default="true" readonly="true" id="142419ee-7cde-4cc2-a45a-d7ce426cc32b" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/NeoDataCrawl.iml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/config.example.py" afterPath="$PROJECT_DIR$/api/config.example.py" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -320,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527156433010</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update gitignore">
+      <created>1527226785237</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1527226785237</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -380,10 +386,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update gitignore" />
     <MESSAGE value="upgrade currency history price analyze" />
     <MESSAGE value="update currency analyzation" />
-    <option name="LAST_COMMIT_MESSAGE" value="update currency analyzation" />
+    <MESSAGE value="update gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="update gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
