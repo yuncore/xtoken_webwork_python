@@ -5,6 +5,7 @@
 /startTest.sh
 /MANIFEST
 /MANIFEST.in
+**__pycache__
 
 
 # Editor directories and files
