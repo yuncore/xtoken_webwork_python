@@ -5,7 +5,6 @@ from api.db import crawl_db, CrawlCollections, relation_db, RelationCollections,
 class BTTLink(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('currency_name', type=str, location='args')
-    parser.add_argument('currency_name', type=str, location='args')
     resource_fields = {
         'title': fields.String,
         'replies': fields.Integer,
@@ -14,6 +13,7 @@ class BTTLink(Resource):
         'profile_url': fields.String,
         'started_by': fields.String,
         'user_id': fields.String,
+        'id': fields.String
     }
 
     @marshal_with(resource_fields, envelope='data')
@@ -89,6 +89,7 @@ def related_btt(currency_name):
     for relation in relations:
         btt_link = crawl_db[CrawlCollections.BTT_LINK].find_one({'_id': relation['topic_id']})
         if btt_link is not None:
+            btt_link['data']['id'] = btt_link['_id']
             btt_links.append(btt_link['data'])
     return btt_links
 

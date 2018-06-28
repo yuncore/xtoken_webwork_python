@@ -23,5 +23,6 @@ def coinmarketcap_analyze_tasks():
     market_cap_total_resample()
     market_cap_altcoin_resample()
 
+
 if __name__ == '__main__':
     coinmarketcap_analyze_tasks()

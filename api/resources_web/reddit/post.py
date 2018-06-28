@@ -20,7 +20,8 @@ class RedditPost(Resource):
         'selftext': fields.String,
         'score': fields.Integer,
         'subreddit': fields.String,
-        'num_comments': fields.Integer
+        'num_comments': fields.Integer,
+        'thumbnail': fields.String
     }
 
     def get(self, post_id=None):
@@ -55,7 +56,8 @@ class RedditPost(Resource):
             'selftext': data['selftext'],
             'score': data['score'],
             'subreddit': data['subreddit'],
-            'num_comments': data['num_comments']
+            'num_comments': data['num_comments'],
+            'thumbnail': data['thumbnail']
         }
 
 

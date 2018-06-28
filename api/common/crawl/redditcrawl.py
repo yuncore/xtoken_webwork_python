@@ -72,6 +72,5 @@ class RedditCrawl:
 
 if __name__ == '__main__':
     # RedditCrawl.crawl_reddit_link('NEO')
-    rc = RedditCrawl()
+    # rc = RedditCrawl()
     rc.crawl_reddit_subreddit_task()
-

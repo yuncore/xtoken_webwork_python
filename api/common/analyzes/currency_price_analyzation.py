@@ -207,7 +207,12 @@ def currency_rank_analyze(ahead_time=0):
         if currency_rank:
             market_cap_rank = currency_rank['rank_market_cap']
             sorted_rank = sorted(market_cap_rank, key=lambda x: x[0], reverse=True)
-            latest_time = sorted_rank[0][0]
+            try:
+                latest_time = sorted_rank[0][0]
+            except IndexError:
+                market_cap_rank = []
+                latest_time = 0
+                print(sorted_rank)
         else:
             latest_time = 0
             market_cap_rank = []

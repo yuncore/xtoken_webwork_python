@@ -152,14 +152,8 @@ class CurrencyList(Resource):
         if sort_col is not None:
             cursor.sort([(sort_col, order_dict[order])])
         currency_list = cursor.skip((page - 1) * num).limit(num)
-
-        currencies = []
-        for currency in currency_list:
-            # 从get_relation_fields方法中获取该currency的相关字段
-            currencies.append(get_relation_fields(currency))
-        # return {'data': currencies, 'count': count}
         result = {
-            'data': currencies,
+            'data': [currency for currency in currency_list],
             'count': count
         }
         return ResultMsg.create_success_msg(result)
@@ -198,8 +192,7 @@ class Currency(Resource):
         currencies = []
         for currency_id in ids:
             currency = crawl_db[CrawlCollections.COINMARKET_CURRENCY_PRICE].find_one({'id': currency_id})
-            if currency is not None:
-                currencies.append(get_relation_fields(currency))
+            currencies.append(currency)
         return currencies
 
 
@@ -275,11 +268,12 @@ class CurrencyHistoryRank(Resource):
 
 
 def get_relation_fields(currency):
-    """ append relation github, reddit, bitcointalk, xtoken information to the params.
+    """
+    update 2018/6/7 unused because front end changed.
+    append relation github, reddit, bitcointalk, xtoken information to the params.
     :param currency: single record from NeoData[COINMARKET_CURRENCY_PRICE].
     :return: currency contains additional information.
     """
-    del currency['_id']
     currency['github'] = related_github(currency['name'])
     currency['reddit'] = related_reddit(currency['name'])
     currency['btt'] = related_btt(currency['name'])

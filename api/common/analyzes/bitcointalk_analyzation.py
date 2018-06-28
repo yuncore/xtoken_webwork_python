@@ -22,7 +22,7 @@ def quote_graph(link_id):
     # 按照用户名分组，计算每个人评论的数量
     grouped_df = comment_df.groupby(['author', 'user_id', 'grade'], as_index=False).agg(np.sum)
 
-    # 取评论数量前500位的用户
+    # 取评论数量前100位的用户
     filtered_df = grouped_df.sort_values(by='num', ascending=False)[:100]
     describe = grouped_df.describe()
 
