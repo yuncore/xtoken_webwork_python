@@ -48,7 +48,7 @@ pluggy==0.6.0
 prompt-toolkit==1.0.15
 py==1.5.2
 PyGithub==1.35
-Pygments==2.2.0
+Pygments==2.7.4
 PyJWT==1.5.3
 pymongo==3.5.1
 pyparsing==2.2.0
